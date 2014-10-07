@@ -14,13 +14,15 @@ class CreatePropertiesTable extends Migration {
 	{
 	  Schema::create('properties', function($table)
     {
-      $table->increments('user_id');
-      $table->string('name')->unique();
+      $table->increments('id');
+      $table->integer('user_id');
+      $table->string('name');
+      $table->string('slug')->unique();
       $table->string('description');
       $table->string('type');
       $table->string('transaction_type');
       $table->integer('price');
-      $table->string('price_type');
+      $table->string('currency');
       $table->string('area');
       $table->string('area_type');
       $table->integer('bedrooms');

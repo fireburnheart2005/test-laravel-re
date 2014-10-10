@@ -17,6 +17,7 @@ class CreatePropertiesTable extends Migration {
       $table->increments('id');
       $table->integer('user_id');
       $table->string('name');
+      $table->string('image_ids');
       $table->string('slug')->unique();
       $table->string('description');
       $table->string('type');

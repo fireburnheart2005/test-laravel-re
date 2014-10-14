@@ -12,5 +12,5 @@
 */
 
 Route::get('/', 'HomeController@showWelcome');
-Route::resource('/bat-dong-san/', 'PropertiesController');
+Route::resource('/bat-dong-san/dang-tin', 'PropertiesController@create');
 Route::get('/{slug}', 'PropertiesController@show');

@@ -22,7 +22,6 @@ class PropertiesTableSeeder extends Seeder {
       'price' => '14000000',
       'currency' => 'VND',
       'area' => '150',
-      'area_type' => 'm2',
       'bedrooms' => '4',
       'bathrooms' => '2',
       'address_ward' => 'Xã An Phú',

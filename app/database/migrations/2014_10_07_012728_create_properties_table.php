@@ -21,11 +21,12 @@ class CreatePropertiesTable extends Migration {
       $table->string('slug')->unique();
       $table->string('description');
       $table->string('type');
-      $table->string('transaction_type');
+      $table->string('subtype');
+      $table->enum('transaction_type', array('sale', 'rent'));
       $table->integer('price');
-      $table->string('currency');
-      $table->string('area');
-      $table->string('area_type');
+      $table->enum('price_type', array('total', 'per square metter'))->default('total');
+      $table->enum('currency', array('VND', 'SJC', 'USD'));
+      $table->string('area'); // square metter
       $table->integer('bedrooms');
       $table->integer('bathrooms');
       $table->string('address_number');

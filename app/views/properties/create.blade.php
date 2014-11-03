@@ -55,13 +55,65 @@
                     'required' => true,
                     'placeholder' => ''))}}
             </div> -->
+            <div class='form-group'>
+              {{ Form::label('price', 'Giá *:') }}
+              <div class="row">
+                <div class="col-xs-5">
+                  {{ Form::text('price', null, array(
+                        'class' => 'form-control',
+                        'id' => 'price',
+                        'required' => true,
+                        'placeholder' => ''))}}
+                </div>
+                <div class="col-xs-3">
+                  {{ Form::select('price_type',
+                        array(
+                          'VND' => 'VND',
+                          'SJC' => 'SJC',
+                          'USD' => 'USD'
+                        ), null, array(
+                        'class' => 'form-control',
+                        'id' => 'price_type',
+                        'required' => true,
+                        'placeholder' => ''))}}
+                </div>
+                <div class="col-xs-4">
+                  {{ Form::select('price_type',
+                    array(
+                      'total' => 'Tổng diện tích',
+                      'per square metter' => 'm2',
+                      'per month' => 'Tháng'
+                    ), null, array(
+                    'class' => 'form-control',
+                    'id' => 'price_type',
+                    'required' => true,
+                    'placeholder' => ''))}}
+                </div>
+              </div>
+            </div>
+            <div class='form-group'>
+              {{ Form::label('bedrooms', 'Phòng ngủ:') }}
+              {{ Form::text('bedrooms', null, array(
+                    'class' => 'form-control',
+                    'id' => 'bedrooms',
+                    'required' => true,
+                    'placeholder' => ''))}}
+            </div>
+            <div class='form-group'>
+              {{ Form::label('area', 'Phòng tắm:') }}
+              {{ Form::text('bathrooms', null, array(
+                    'class' => 'form-control',
+                    'id' => 'bathrooms',
+                    'required' => true,
+                    'placeholder' => ''))}}
+            </div>
           </div>
           <div class="col-xs-6">
             <div class='form-group'>
-              {{ Form::label('type', 'Loại giao dịch *:') }}
-              {{ Form::select('type', array(null=>'Chọn', 'sale' => 'Bán', 'rent' => 'Cho thuê'), null, array(
+              {{ Form::label('transaction_type', 'Loại giao dịch *:') }}
+              {{ Form::select('transaction_type', array(null=>'Chọn', 'sale' => 'Bán', 'rent' => 'Cho thuê'), null, array(
                     'class' => 'form-control',
-                    'id' => 'type',
+                    'id' => 'transaction_type',
                     'required' => true,
                     'placeholder' => ''))}}
             </div>
@@ -70,6 +122,65 @@
               {{ Form::text('area', null, array(
                     'class' => 'form-control',
                     'id' => 'area',
+                    'required' => true,
+                    'placeholder' => ''))}}
+            </div>
+            <div class='form-group'>
+              {{ Form::label('legal_document', 'Pháp lý:') }}
+              {{ Form::select('legal_document', array(
+                null=>'Chọn',
+                '1' => 'Sổ đỏ/Sổ hồng',
+                '2' => 'Giấy tờ hợp lệ',
+                '3' => 'GP Xây dựng',
+                '4' => 'GP Kinh doanh'), null, array(
+                  'class' => 'form-control',
+                  'id' => 'legal_document',
+                  'required' => true,
+                  'placeholder' => ''))}}
+            </div>
+            <div class='form-group'>
+              {{ Form::label('total_floor', 'Số tầng:') }}
+              {{ Form::text('total_floor', null, array(
+                    'class' => 'form-control',
+                    'id' => 'total_floor',
+                    'required' => true,
+                    'placeholder' => ''))}}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class='form-group'>
+              {{ Form::label('contact_name', 'Tên liên hệ *:') }}
+              {{ Form::text('contact_name', null, array(
+                    'class' => 'form-control',
+                    'id' => 'contact_name',
+                    'required' => true,
+                    'placeholder' => ''))}}
+            </div>
+            <div class='form-group'>
+              {{ Form::label('contact_tel', 'Điện thoại bàn:') }}
+              {{ Form::text('contact_tel', null, array(
+                    'class' => 'form-control',
+                    'id' => 'contact_tel',
+                    'required' => true,
+                    'placeholder' => ''))}}
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class='form-group'>
+              {{ Form::label('contact_mobile', 'Di động *:') }}
+              {{ Form::text('contact_mobile', null, array(
+                    'class' => 'form-control',
+                    'id' => 'contact_mobile',
+                    'required' => true,
+                    'placeholder' => ''))}}
+            </div>
+            <div class='form-group'>
+              {{ Form::label('contact_email', 'Email:') }}
+              {{ Form::text('contact_email', null, array(
+                    'class' => 'form-control',
+                    'id' => 'contact_email',
                     'required' => true,
                     'placeholder' => ''))}}
             </div>

@@ -28,7 +28,7 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li>
-              <a href="/" target="_blank"><i class="fa fa-home"></i>&nbsp;Home</a>
+              <a href="/"><i class="fa fa-home"></i>&nbsp;Home</a>
             </li>
           </ul>
         </div><!-- /.nav-collapse -->

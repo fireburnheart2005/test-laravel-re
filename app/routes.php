@@ -13,4 +13,6 @@
 
 Route::get('/', 'HomeController@showWelcome');
 Route::resource('/bat-dong-san/dang-tin', 'PropertiesController@create');
+Route::get('/cities/{id}/districts', 'AreaController@districts');
+Route::get('/districts/{id}/wards', 'AreaController@wards');
 Route::get('/{slug}', 'PropertiesController@show');

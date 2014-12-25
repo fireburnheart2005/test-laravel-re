@@ -6,7 +6,7 @@
         <div class='form-group'>
           {{ Form::label('city', 'Tỉnh/ thành phố *', array('class' => 'col-xs-4 control-label')) }}
           <div class="col-xs-8">
-            {{ Form::select('city', array(), null, array(
+            {{ Form::select('city', $cities, null, array(
                 'class' => 'form-control',
                 'id' => 'city',
                 'required' => true,
@@ -52,3 +52,33 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  $(function (e) {
+    $('#city').change(function (e) {
+      var that = this;
+      $.ajax({
+        url: '/cities/' + $(that).val() + '/districts'
+      }).done(function (data) {
+        // create options for districts
+        el = '';
+        for (var i = 0; i < data.length; i++) {
+          el += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
+        }
+        $('#district').html($(el));
+      });
+    });
+    $('body').on('change', '#district', function (e) {
+      var that = this;
+      $.ajax({
+        url: '/districts/' + $(that).val() + '/wards'
+      }).done(function (data) {
+        // create options for districts
+        el = '';
+        for (var i = 0; i < data.length; i++) {
+          el += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
+        }
+        $('#ward').html($(el));
+      });
+    });
+  })
+</script>

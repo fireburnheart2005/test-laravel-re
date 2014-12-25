@@ -20,7 +20,12 @@ class PropertiesController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('properties.create');
+		$cityList = City::all();
+		$cities = [0 => '---Chọn---'];
+		foreach ($cityList as $city) {
+			$cities[$city->id] = $city->name;
+		}
+		return View::make('properties.create', ['cities' => $cities]);
 	}
 
 

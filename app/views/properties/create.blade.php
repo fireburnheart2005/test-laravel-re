@@ -17,7 +17,7 @@
         @endif
         @include('properties._first_panel')
         @include('properties._second_panel')
-        @include('properties._third_panel')
+        @include('properties._third_panel', array('cities' => $cities))
         @include('properties._last_panel')
         <button class='btn btn-primary' type="submit">Create</button>
         <a href='/projects/' class='btn btn-warning' type="submit">Back</a>

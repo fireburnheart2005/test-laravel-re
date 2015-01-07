@@ -19,8 +19,8 @@ class CreatePropertiesTable extends Migration {
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('description');
-            $table->string('type_id');
-            $table->string('category_id');
+            $table->integer('category_id')->unsigned();
+            $table->integer('subcategory_id')->unsigned();
             $table->enum('transaction_type', array('sale', 'rent'));
             $table->integer('price');
             // $table->enum('price_type', array('total', 'per square metter', 'per month'))->default('total');

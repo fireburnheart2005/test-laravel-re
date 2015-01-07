@@ -1,12 +1,29 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,300,600,400);
+html, body {
+  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: #333;
+  font-size: 13px;
+}
 body {
   min-height: 2000px;
   padding-top: 70px;
+}
+.border-radius(@radius) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
 }
 .container {
   width: 1000px;
 }
 .form-control {
-  padding: 6px 6px;
+  .border-radius(0);
+  height: 30px;
+  padding: 5px 10px;
+  font-size: 100%;
+}
+select.form-control {
+  padding: 0 0;
 }
 p {
   margin: 0 0 0;
@@ -40,4 +57,29 @@ h1, h2, h3 {
 }
 .row-gap-medium {
   min-height: 50px;
+}
+// navbar
+.navbar {
+  background-color: #36b;
+  color: #fff;
+  .navbar-nav > li > a {
+    color: #fff;
+    &:hover {
+      color: #fff;
+    }
+  }
+  // line-height: 45px;
+  // height: 68px;
+}
+.step-title {
+  padding: 5px 10px;
+  background: #F2F3F5;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+label {
+  font-weight: normal;
+}
+.invisible {
+  visibility: hidden;
 }

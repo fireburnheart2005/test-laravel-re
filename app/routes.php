@@ -13,6 +13,10 @@
 
 Route::get('/', 'HomeController@showWelcome');
 Route::resource('/bat-dong-san/dang-tin', 'PropertiesController@create');
-Route::get('/cities/{id}/districts', 'AreaController@districts');
-Route::get('/districts/{id}/wards', 'AreaController@wards');
+Route::get('/cities/{id}/districts', 'AreasController@districts');
+Route::get('/districts/{id}/wards', 'AreasController@wards');
+Route::resource('categories', 'CategoriesController');
+Route::get('categories/{id}/subcategories', 'CategoriesController@subcategories');
+
+// DO NOT put any routes after the following
 Route::get('/{slug}', 'PropertiesController@show');

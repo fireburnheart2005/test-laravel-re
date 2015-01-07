@@ -1,6 +1,6 @@
 <?php
 
-class UsersTableSeeder extends Seeder {
+class CategoriesTableSeeder extends Seeder {
 	/**
 	 * User table seeder.
 	 *
@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder {
       ));
 
       Category::create(array(
-        'id' => 3,
+        'id' => 2,
         'name' => 'Căn hộ'
       ));
 

@@ -1,6 +1,6 @@
 <?php
 
-class AreaController extends BaseController {
+class AreasController extends BaseController {
     public function districts($id)
     {
         $districts = District::where('city_id', '=', $id)->select(array('id', 'name'))->get();

@@ -18,7 +18,7 @@ class CreateWardsTable extends Migration {
 			$table->string('name');
 			$table->integer('district_id')->unsigned();
 			$table->foreign('district_id')->references('id')
-				->on('wards')->onDelete('cascade')
+				->on('districts')->onDelete('cascade')
 				->onUpdate('cascade');
 			$table->timestamps();
 		});

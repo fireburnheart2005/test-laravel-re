@@ -23,9 +23,9 @@ class PropertiesController extends \BaseController {
 		$cityList = City::all();
 		$categoryList = Category::all();
 		$subcategoryList = Subcategory::all();
-		$cities = [0 => '---Chọn---'];
-		$categories = [0 => '---Chọn---'];
-		$subcategories = [0 => '---Chọn---'];
+		$cities = [null => '---Chọn---'];
+		$categories = [null => '---Chọn---'];
+		$subcategories = [null => '---Chọn---'];
 		foreach ($cityList as $city) {
 			$cities[$city->id] = $city->name;
 		}

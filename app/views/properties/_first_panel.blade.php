@@ -3,11 +3,11 @@
   <div class="col-xs-8">
     <div class='form-group'>
       {{ Form::label('title', 'Tiêu đề *') }}
-        {{ Form::text('title', null, array(
-              'class' => 'form-control',
-              'id' => 'title',
-              'required' => true,
-              'placeholder' => ''))}}
+      {{ Form::text('title', null, array(
+            'class' => 'form-control',
+            'id' => 'title',
+            'required' => true,
+            'placeholder' => ''))}}
     </div>
     <div class='form-group'>
       {{ Form::label('category', 'Loại BĐS *') }}
@@ -26,13 +26,70 @@
             'placeholder' => ''))}}
     </div>
     <div class="form-group image-wrapper">
-      <!-- {{ Form::label('images', 'Chọn file ảnh *')}} -->
-      <div><label>Upload ảnh *</label> <span class="fa fa-cloud-upload fa-2x text-primary"></span></div>
+      <div><label>Upload ảnh *</label></div>
+      <div class="row">
+        <div class="col-xs-2 image-box">
+          <div class="placeholder">
+            <div class="add-button">
+              Thêm ảnh
+            </div>
+          </div>
+          <div class="text-center"><span class="fa fa-rotate-right fa-lg"></span>&nbsp;&nbsp;<span class="fa fa-trash fa-lg"></span></div>
+          <div class="hidden-file-input">
+            <input class="hidden" type="file" name="image[]"></input>
+          </div>
+        </div>
+        <div class="col-xs-2 image-box">
+          <div class="placeholder">
+            <div class="add-button">
+              Thêm ảnh
+            </div>
+          </div>
+          <div class="text-center"><span class="fa fa-rotate-right fa-lg"></span>&nbsp;&nbsp;<span class="fa fa-trash fa-lg"></span></div>
+          <div class="hidden-file-input">
+            <input class="hidden" type="file" name="image[]"></input>
+          </div>
+        </div>
+        <div class="col-xs-2 image-box">
+          <div class="placeholder">
+            <div class="add-button">
+              Thêm ảnh
+            </div>
+          </div>
+          <div class="text-center"><span class="fa fa-rotate-right fa-lg"></span>&nbsp;&nbsp;<span class="fa fa-trash fa-lg"></span></div>
+          <div class="hidden-file-input">
+            <input class="hidden" type="file" name="image[]"></input>
+          </div>
+        </div>
+        <div class="col-xs-2 image-box">
+          <div class="placeholder">
+            <div class="add-button">
+              Thêm ảnh
+            </div>
+          </div>
+          <div class="text-center"><span class="fa fa-rotate-right fa-lg"></span>&nbsp;&nbsp;<span class="fa fa-trash fa-lg"></span></div>
+          <div class="hidden-file-input">
+            <input class="hidden" type="file" name="image[]"></input>
+          </div>
+        </div>
+        <div class="col-xs-2 image-box">
+          <div class="placeholder">
+            <div class="add-button">
+              Thêm ảnh
+            </div>
+          </div>
+          <div class="text-center"><span class="fa fa-rotate-right fa-lg"></span>&nbsp;&nbsp;<span class="fa fa-trash fa-lg"></span></div>
+          <div class="hidden-file-input">
+            <input class="hidden" type="file" name="image[]"></input>
+          </div>
+        </div>
+      </div>
+<!--       <div><label>Upload ảnh *</label> <span class="fa fa-cloud-upload fa-2x text-primary"></span></div>
       <div class="row img-preview"></div>
       {{ Form::file('hidden-file-upload-input', array(
         'class' => 'form-control hidden',
         'required' => true,
-      ))}}
+      ))}} -->
     </div>
   </div>
 </div>
@@ -157,7 +214,7 @@
       if ($(this).val() == 0) {
         $('.subcategory-wrapper').addClass('hidden');
         // reset ward selection field
-        $('#subcategory').html('<option value="0">---Chọn---</option>');
+        $('#subcategory').html('<option value>---Chọn---</option>');
         return;
       }
       $('.subcategory-wrapper').removeClass('hidden');
@@ -165,7 +222,7 @@
         url: '/categories/' + $(that).val() + '/subcategories'
       }).done(function (data) {
         // create options for districts
-        el = '<option value="0">---Chọn---</option>';
+        el = '<option value>---Chọn---</option>';
         for (var i = 0; i < data.length; i++) {
           el += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
         }
@@ -177,10 +234,10 @@
       var that = this;
       if ($(this).val() == 0) {
         $('.district-wrapper').addClass('hidden');
-        // reset ward selection field
-        $('#ward').html('<option value="0">---Chọn---</option>');
         $('.ward-wrapper').addClass('hidden');
         $('.address-wrapper').addClass('hidden');
+        // reset ward selection field
+        $('#ward').html('<option value>---Chọn---</option>');
         return;
       }
       $('.district-wrapper').removeClass('hidden');
@@ -188,7 +245,7 @@
         url: '/cities/' + $(that).val() + '/districts'
       }).done(function (data) {
         // create options for districts
-        el = '<option value="0">---Chọn---</option>';
+        el = '<option value>---Chọn---</option>';
         for (var i = 0; i < data.length; i++) {
           el += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
         }
@@ -199,20 +256,30 @@
     $('body').on('change', '#district', function (e) {
       var that = this;
       if ($(that).val() == 0) {
+        $('.ward-wrapper').addClass('hidden');
         $('.address-wrapper').addClass('hidden');
         return;
       }
-      $('.address-wrapper').removeClass('hidden');
+      $('.ward-wrapper').removeClass('hidden');
       $.ajax({
         url: '/districts/' + $(that).val() + '/wards'
       }).done(function (data) {
         // create options for districts
-        el = '<option value="0">---Chọn---</option>';
+        el = '<option value>---Chọn---</option>';
         for (var i = 0; i < data.length; i++) {
           el += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
         }
         $('#ward').html($(el));
       });
+    });
+    // Ward change
+    $('body').on('change', '#ward', function (e) {
+      var that = this;
+      if ($(that).val() == 0) {
+        $('.address-wrapper').addClass('hidden');
+        return;
+      }
+      $('.address-wrapper').removeClass('hidden');
     });
   });
 </script>

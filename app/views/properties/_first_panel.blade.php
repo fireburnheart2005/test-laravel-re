@@ -25,14 +25,66 @@
             'required' => true,
             'placeholder' => ''))}}
     </div>
-    <div class="form-group">
+    <div class="form-group image-wrapper">
       {{ Form::label('images', 'Chọn file ảnh')}}
-      <div><span class="fa fa-cloud-upload fa-lg text-primary"></span></div>
-      <div class="row img-preview"></div>
+      <div class="row">
+        <div class="col-xs-2 image-box">
+          <div class="placeholder">
+            <a href="#attachment-modal">
+              <div class="add-button">
+                Thêm ảnh
+              </div>
+            </a>
+          </div>
+          <div class="pic-title"></div>
+        </div>
+        <div class="col-xs-2 image-box">
+          <div class="placeholder">
+            <a href="#attachment-modal">
+              <div class="add-button">
+                Thêm ảnh
+              </div>
+            </a>
+          </div>
+          <div class="pic-title"></div>
+        </div>
+        <div class="col-xs-2 image-box">
+          <div class="placeholder">
+            <a href="#attachment-modal">
+              <div class="add-button">
+                Thêm ảnh
+              </div>
+            </a>
+          </div>
+          <div class="pic-title"></div>
+        </div>
+        <div class="col-xs-2 image-box">
+          <div class="placeholder">
+            <a href="#attachment-modal">
+              <div class="add-button">
+                Thêm ảnh
+              </div>
+            </a>
+          </div>
+          <div class="pic-title"></div>
+        </div>
+        <div class="col-xs-2 image-box">
+          <div class="placeholder">
+            <a href="#attachment-modal">
+              <div class="add-button">
+                Thêm ảnh
+              </div>
+            </a>
+          </div>
+          <div class="pic-title"></div>
+        </div>
+      </div>
+      <!-- <div><span class="fa fa-cloud-upload fa-lg text-primary"></span></div> -->
+      <!-- <div class="row img-preview"></div>
       {{ Form::file('hidden-file-upload-input', array(
         'class' => 'form-control hidden',
         'required' => true,
-      ))}}
+      ))}} -->
     </div>
   </div>
 </div>

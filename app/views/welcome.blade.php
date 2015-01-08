@@ -6,7 +6,6 @@
         <div class="row">
           <div class="col-xs-6">
             <div>
-              <img class="pull-left" title="{{$property->name}}" alt="{{$property->name}}" src="{{$_ENV['IMAGE_URL'].explode(',', $property->image_ids)[0].'_thumbnail.jpg'}}" width=140 height=110>
               <div class="property-brief">
                 <h3><a href="/{{$property->slug}}">{{$property->name}}</a></h3>
                 <p>

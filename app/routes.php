@@ -12,11 +12,13 @@
 */
 
 Route::get('/', 'HomeController@showWelcome');
-Route::resource('/bat-dong-san/dang-tin', 'PropertiesController@create');
+Route::get('/bat-dong-san/dang-tin', 'PropertiesController@create');
 Route::get('/cities/{id}/districts', 'AreasController@districts');
 Route::get('/districts/{id}/wards', 'AreasController@wards');
-Route::resource('categories', 'CategoriesController');
 Route::get('categories/{id}/subcategories', 'CategoriesController@subcategories');
-
+Route::resource('categories', 'CategoriesController');
+Route::resource('images', 'ImagesController');
+Route::post('/images/tmp', 'ImagesController@storeTemp');
+Route::delete('/images/tmp/{id}', 'ImagesController@destroyTemp');
 // DO NOT put any routes after the following
 Route::get('/{slug}', 'PropertiesController@show');

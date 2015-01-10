@@ -1,4 +1,4 @@
-<div class="step-title">Thông tin bất động sản</div>
+<div class="step-title">Mô tả chi tiết</div>
 <div class="row">
   <div class="col-xs-6">
     <div class='form-group'>
@@ -16,12 +16,17 @@
       </label>
     </div>
     <div class='form-group'>
-      {{ Form::label('total_floor', 'Số tầng') }}
-      {{ Form::text('total_floor', null, array(
-            'class' => 'form-control',
-            'id' => 'total_floor',
-            'required' => true,
-            'placeholder' => ''))}}
+      {{ Form::label('legal_document', 'Pháp lý (*)') }}
+      {{ Form::select('legal_document', array(
+        null=>'Chọn',
+        '1' => 'Sổ đỏ/Sổ hồng',
+        '2' => 'Giấy tờ hợp lệ',
+        '3' => 'GP Xây dựng',
+        '4' => 'GP Kinh doanh'), null, array(
+        'class' => 'form-control',
+        'id' => 'legal_document',
+        'required' => true,
+        'placeholder' => ''))}}
     </div>
   </div>
   <div class="col-xs-6">
@@ -40,17 +45,12 @@
       </label>
     </div>
     <div class='form-group'>
-      {{ Form::label('legal_document', 'Pháp lý') }}
-      {{ Form::select('legal_document', array(
-        null=>'Chọn',
-        '1' => 'Sổ đỏ/Sổ hồng',
-        '2' => 'Giấy tờ hợp lệ',
-        '3' => 'GP Xây dựng',
-        '4' => 'GP Kinh doanh'), null, array(
-        'class' => 'form-control',
-        'id' => 'legal_document',
-        'required' => true,
-        'placeholder' => ''))}}
+      {{ Form::label('total_floor', 'Số tầng') }}
+      {{ Form::text('total_floor', null, array(
+            'class' => 'form-control',
+            'id' => 'total_floor',
+            'required' => true,
+            'placeholder' => ''))}}
     </div>
   </div>
 </div>
@@ -62,7 +62,6 @@
       {{ Form::text('bedrooms', null, array(
             'class' => 'form-control',
             'id' => 'bedrooms',
-            'required' => true,
             'placeholder' => ''))}}
     </div>
   </div>
@@ -73,7 +72,6 @@
       {{ Form::text('bathrooms', null, array(
             'class' => 'form-control',
             'id' => 'bathrooms',
-            'required' => true,
             'placeholder' => ''))}}
     </div>
   </div>

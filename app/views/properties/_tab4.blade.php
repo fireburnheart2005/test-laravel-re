@@ -1,4 +1,4 @@
-<div class="step-title">Thông tin bất động sản</div>
+<div class="step-title">Liên hệ</div>
 <div class="row">
   <div class="col-xs-6">
     <div class='form-group'>

@@ -14,7 +14,6 @@
       {{ Form::text('contact_tel', null, array(
             'class' => 'form-control',
             'id' => 'contact_tel',
-            'required' => true,
             'placeholder' => ''))}}
     </div>
   </div>
@@ -32,7 +31,6 @@
       {{ Form::text('contact_email', null, array(
             'class' => 'form-control',
             'id' => 'contact_email',
-            'required' => true,
             'placeholder' => ''))}}
     </div>
   </div>

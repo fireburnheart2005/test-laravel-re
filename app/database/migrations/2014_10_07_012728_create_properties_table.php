@@ -45,7 +45,7 @@ class CreatePropertiesTable extends Migration {
                 ->on('cities');
             $table->string('contact_name');
             $table->string('contact_mobile');
-            $table->string('contact_tel');
+            $table->string('contact_telephone');
             $table->string('contact_note');
             $table->timestamps();
         });

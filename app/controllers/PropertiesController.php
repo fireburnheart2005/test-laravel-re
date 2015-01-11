@@ -2,6 +2,10 @@
 
 class PropertiesController extends \BaseController {
 
+	public function __construct() {
+        $this->beforeFilter('auth', array('except' => ['index', 'show']));
+    }
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -51,7 +55,9 @@ class PropertiesController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		// step 1: save information
+		dd(Input::all());
+		// step 2: save images
 	}
 
 

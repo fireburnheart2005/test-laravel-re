@@ -38,7 +38,7 @@
               <a href="#">My Account</a>
             </li>
             <li>
-              <a href='#'>Logout</a>
+              <a href='/login'>Login</a>
             </li>
             <li>
               <button class="btn btn-info navbar-btn">

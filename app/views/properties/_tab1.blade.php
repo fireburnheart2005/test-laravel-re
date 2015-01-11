@@ -2,10 +2,10 @@
 <div class="row">
   <div class="col-xs-8">
     <div class='form-group'>
-      {{ Form::label('title', 'Tiêu đề *') }}
-      {{ Form::text('title', null, array(
+      {{ Form::label('name', 'Tiêu đề *') }}
+      {{ Form::text('name', null, array(
             'class' => 'form-control',
-            'id' => 'title',
+            'id' => 'name',
             'required' => true,
             'placeholder' => ''))}}
     </div>
@@ -65,7 +65,7 @@
       </div>
 
       <div class='form-group address-wrapper hidden'>
-        {{ Form::label('address', 'Địa chỉ *') }}
+        {{ Form::label('address', 'Địa chỉ') }}
         {{ Form::text('address', null, array(
           'class' => 'form-control',
           'id' => 'address',

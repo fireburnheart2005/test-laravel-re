@@ -16,7 +16,7 @@
       </label>
     </div>
     <div class='form-group'>
-      {{ Form::label('legal_document', 'Pháp lý (*)') }}
+      {{ Form::label('legal_document', 'Pháp lý *') }}
       {{ Form::select('legal_document', array(
         null=>'Chọn',
         '1' => 'Sổ đỏ/Sổ hồng',
@@ -49,7 +49,6 @@
       {{ Form::text('total_floor', null, array(
             'class' => 'form-control',
             'id' => 'total_floor',
-            'required' => true,
             'placeholder' => ''))}}
     </div>
   </div>

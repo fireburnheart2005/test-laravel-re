@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-xs-12">
     <div class="form-group image-wrapper">
-      <div><label>Upload ảnh *</label></div>
+      <div><label>Upload ảnh</label></div>
       <div class="row">
         <div class="col-xs-2">
           <div class="add-image-wrapper" data-index=0>

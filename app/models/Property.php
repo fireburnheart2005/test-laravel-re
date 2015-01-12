@@ -8,4 +8,5 @@ class Property extends Eloquent {
    * @var string
    */
   protected $table = 'properties';
+  protected $guarded = ['_token', 'image'];
 }

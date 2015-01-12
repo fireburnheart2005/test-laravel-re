@@ -51,7 +51,19 @@ class PropertiesController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		// save title
+		// save catalog
+		// save subcatalog
+		// save location
+		// IMAGES
+		// move temprary images to storage directory
+		$images = Input::get('image');
+
+		// foreach ($images as $name) {
+			// rename(app_path().'/../public/tmp/'.$name, app_path().'/../public/assets/'.$name);
+		// }
+		Property::create(Input::all());
+		return 3;
 	}
 
 

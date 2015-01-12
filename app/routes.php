@@ -18,5 +18,6 @@ Route::get('/districts/{id}/wards', 'AreasController@wards');
 Route::resource('categories', 'CategoriesController');
 Route::get('categories/{id}/subcategories', 'CategoriesController@subcategories');
 
+Route::get('/account', 'AccountController@index');
 // DO NOT put any routes after the following
 Route::get('/{slug}', 'PropertiesController@show');

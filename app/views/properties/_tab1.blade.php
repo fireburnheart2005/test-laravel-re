@@ -10,18 +10,18 @@
             'placeholder' => ''))}}
     </div>
     <div class='form-group'>
-      {{ Form::label('category', 'Loại BĐS *') }}
-      {{ Form::select('category', $categories, null, array(
+      {{ Form::label('category_id', 'Loại BĐS *') }}
+      {{ Form::select('category_id', $categories, null, array(
             'class' => 'form-control',
-            'id' => 'category',
+            'id' => 'category_id',
             'required' => true,
             'placeholder' => ''))}}
     </div>
     <div class='form-group subcategory-wrapper hidden'>
-      {{ Form::label('subcategory', 'Kiểu BĐS') }}
-      {{ Form::select('subcategory', array(), null, array(
+      {{ Form::label('subcategory_id', 'Kiểu BĐS') }}
+      {{ Form::select('subcategory_id', array(), null, array(
             'class' => 'form-control',
-            'id' => 'subcategory',
+            'id' => 'subcategory_id',
             'required' => true,
             'placeholder' => ''))}}
     </div>
@@ -32,10 +32,10 @@
 <div class="row">
     <div class="col-xs-8">
       <div class='form-group'>
-        {{ Form::label('city', 'Tỉnh/ thành phố *') }}
-        {{ Form::select('city', $cities, null, array(
+        {{ Form::label('city_id', 'Tỉnh/ thành phố *') }}
+        {{ Form::select('city_id', $cities, null, array(
             'class' => 'form-control',
-            'id' => 'city',
+            'id' => 'city_id',
             'required' => true,
             'multiple' => true,
             'size' => 5,
@@ -43,10 +43,10 @@
       </div>
 
       <div class='form-group district-wrapper hidden'>
-        {{ Form::label('district', 'Quận/ huyện *') }}
-        {{ Form::select('district', array(), null, array(
+        {{ Form::label('district_id', 'Quận/ huyện *') }}
+        {{ Form::select('district_id', array(), null, array(
           'class' => 'form-control',
-          'id' => 'district',
+          'id' => 'district_id',
           'required' => true,
           'multiple' => true,
           'size' => 5,
@@ -54,10 +54,10 @@
       </div>
 
       <div class='form-group ward-wrapper hidden'>
-        {{ Form::label('ward', 'Phường/ xã *') }}
-        {{ Form::select('ward', array(), null, array(
+        {{ Form::label('ward_id', 'Phường/ xã *') }}
+        {{ Form::select('ward_id', array(), null, array(
             'class' => 'form-control',
-            'id' => 'ward',
+            'id' => 'ward_id',
             'required' => true,
             'multiple' => true,
             'size' => 5,
@@ -76,12 +76,12 @@
 <script type="text/javascript">
   $(function (e) {
     // Category change
-    $('#category').change(function (e) {
+    $('#category_id').change(function (e) {
       var that = this;
       if ($(this).val() == 0) {
         $('.subcategory-wrapper').addClass('hidden');
         // reset ward selection field
-        $('#subcategory').html('<option value>---Chọn---</option>');
+        $('#subcategory_id').html('<option value>---Chọn---</option>');
         return;
       }
       $('.subcategory-wrapper').removeClass('hidden');
@@ -93,18 +93,18 @@
         for (var i = 0; i < data.length; i++) {
           el += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
         }
-        $('#subcategory').html($(el));
+        $('#subcategory_id').html($(el));
       });
     });
     // City change
-    $('#city').change(function (e) {
+    $('#city_id').change(function (e) {
       var that = this;
       if ($(this).val() == 0) {
         $('.district-wrapper').addClass('hidden');
         $('.ward-wrapper').addClass('hidden');
         $('.address-wrapper').addClass('hidden');
         // reset ward selection field
-        $('#ward').html('<option value>---Chọn---</option>');
+        $('#ward_id').html('<option value>---Chọn---</option>');
         return;
       }
       $('.district-wrapper').removeClass('hidden');
@@ -116,11 +116,11 @@
         for (var i = 0; i < data.length; i++) {
           el += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
         }
-        $('#district').html($(el));
+        $('#district_id').html($(el));
       });
     });
     // District change
-    $('body').on('change', '#district', function (e) {
+    $('body').on('change', '#district_id', function (e) {
       var that = this;
       if ($(that).val() == 0) {
         $('.ward-wrapper').addClass('hidden');
@@ -136,11 +136,11 @@
         for (var i = 0; i < data.length; i++) {
           el += '<option value="' + data[i]['id'] + '">' + data[i]['name'] + '</option>';
         }
-        $('#ward').html($(el));
+        $('#ward_id').html($(el));
       });
     });
     // Ward change
-    $('body').on('change', '#ward', function (e) {
+    $('body').on('change', '#ward_id', function (e) {
       var that = this;
       if ($(that).val() == 0) {
         $('.address-wrapper').addClass('hidden');

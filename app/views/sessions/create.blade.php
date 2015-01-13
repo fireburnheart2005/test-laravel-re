@@ -1,11 +1,11 @@
 @extends('master')
 @section('content')
-    <ol class="breadcrumb">
-      <li><a href="/">Home</a></li>
-      <li class="active">Login</li>
-    </ol>
-    <div class="row form-wrapper">
-        <div class="col-xs-8">
+    <div class="row">
+      <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li class="active">Login</li>
+      </ol>
+        <div class="col-xs-8 form-wrapper">
             <div class="row">
                 <div class="col-xs-6">
                     {{ Form::open(array('url' => '/sessions', 'method' => 'post', 'role' => 'form')) }}

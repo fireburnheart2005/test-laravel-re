@@ -32,7 +32,12 @@ class SessionsController extends \BaseController {
 	 */
 	public function store()
 	{
-		
+		$credentials = Input::only('email', 'password');
+		$remember = Input::has('remember');
+		if (Auth::attempt($credentials, $remember)) {
+			return Redirect::intended('/');
+		}
+		return Redirect::to('login');
 	}
 
 	/**

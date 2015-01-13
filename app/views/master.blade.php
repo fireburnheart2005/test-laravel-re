@@ -34,16 +34,21 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="#">My Account</a>
-            </li>
-            <li>
-              <a href='/login'>Login</a>
-            </li>
-            <li>
+            @if (!Auth::check())
+              <li>
+                <a href='/login'><span class="fa fa-user"></span>Đăng nhập</a>
+              </li>
+            @else
+              <li>
+                <a href='/account'>Account</a>
+              </li>
+              <li>
+                <a href='/logout'>Logout</a>
+              </li>
+            @endif
+            <li id="add-property-btn">
               <button class="btn btn-info navbar-btn">
-                <span class="fa fa-plus"></span>
-                &nbsp;ĐĂNG TIN
+                <span class="fa fa-plus"></span>ĐĂNG TIN
               </button>
             </li>
           </ul>
@@ -55,5 +60,13 @@
     </div>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(function () {
+      $('#add-property-btn').click(function (e) {
+        location.href = '/bat-dong-san/dang-tin';
+        e.preventDefault();
+      });
+    });
+    </script>
   </body>
 </html>

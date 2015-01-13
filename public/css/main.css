@@ -66,6 +66,9 @@ h3 {
 .navbar .navbar-nav > li > a:hover {
   color: #fff;
 }
+.navbar .fa {
+  margin-right: 5px;
+}
 .step-title {
   padding: 5px 10px;
   background: #F2F3F5;

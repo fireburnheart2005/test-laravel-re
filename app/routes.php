@@ -58,5 +58,6 @@ Route::resource('properties', 'PropertiesController');
 Route::resource('sessions', 'SessionsController');
 Route::resource('users', 'UsersController');
 
+Route::get('/account', 'AccountController@index');
 // DO NOT put any routes after the following
 Route::get('/{slug}', 'PropertiesController@show');

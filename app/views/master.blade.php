@@ -46,7 +46,7 @@
                 <a href='/logout'>Logout</a>
               </li>
             @endif
-            <li id="add-property-btn">
+            <li id="add-listing-btn">
               <button class="btn btn-info navbar-btn">
                 <span class="fa fa-plus"></span>ĐĂNG TIN
               </button>
@@ -62,7 +62,7 @@
     <script src="/js/bootstrap.min.js"></script>
     <script type="text/javascript">
     $(function () {
-      $('#add-property-btn').click(function (e) {
+      $('#add-listing-btn').click(function (e) {
         location.href = '/bat-dong-san/dang-tin';
         e.preventDefault();
       });

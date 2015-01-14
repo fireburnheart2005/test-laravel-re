@@ -17,8 +17,8 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-		$properties = Property::all();
-		return View::make('welcome', array('properties' => $properties));
+		$listings = Listing::all();
+		return View::make('welcome', array('listings' => $listings));
 	}
 
 }

@@ -1,21 +1,21 @@
 @extends('master')
 @section('content')
-  <div class="row property">
+  <div class="row listing">
     <div class="col-xs-10">
-      <h1>{{$property->name}}</h1>
+      <h1>{{$listing->name}}</h1>
       <p>
         <span class="fa fa-map-marker"></span>
-        @if ($property->address_number)
-          {{$property->address_number.', '}}
+        @if ($listing->address_number)
+          {{$listing->address_number.', '}}
         @endif
-        @if ($property->address_ward)
-          {{$property->address_ward.', '}}
+        @if ($listing->address_ward)
+          {{$listing->address_ward.', '}}
         @endif
-        @if ($property->address_district)
-          {{$property->address_district.', '}}
+        @if ($listing->address_district)
+          {{$listing->address_district.', '}}
         @endif
-        @if ($property->address_city)
-          {{$property->address_city}}
+        @if ($listing->address_city)
+          {{$listing->address_city}}
         @endif
       </p>
       <div class="row">
@@ -36,7 +36,7 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
               <?php $i = 0; ?>
-              @foreach (explode(',', $property->image_ids) as $image_id)
+              @foreach (explode(',', $listing->image_ids) as $image_id)
                 @if ($image_id)
                   @if ($i == 0)
                     <div class="item active">

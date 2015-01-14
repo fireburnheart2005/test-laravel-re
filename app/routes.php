@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'HomeController@showWelcome');
-Route::get('/bat-dong-san/dang-tin', 'PropertiesController@create');
+Route::get('/bat-dong-san/dang-tin', 'ListingsController@create');
 Route::get('/cities/{id}/districts', 'AreasController@districts');
 Route::get('/districts/{id}/wards', 'AreasController@wards');
 Route::get('categories/{id}/subcategories', 'CategoriesController@subcategories');
@@ -53,11 +53,11 @@ Route::get('/signup', function ()
  */
 Route::resource('categories', 'CategoriesController');
 Route::resource('images', 'ImagesController');
-Route::resource('properties', 'PropertiesController');
+Route::resource('listings', 'ListingsController');
 
 Route::resource('sessions', 'SessionsController');
 Route::resource('users', 'UsersController');
 
 Route::get('/account', 'AccountController@index');
 // DO NOT put any routes after the following
-Route::get('/{slug}', 'PropertiesController@show');
+Route::get('/{slug}', 'ListingsController@show');

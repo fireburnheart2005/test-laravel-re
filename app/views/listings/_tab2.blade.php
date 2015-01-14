@@ -1,4 +1,17 @@
-<div class="step-title">Mô tả chi tiết</div>
+<div class="step-title">Chi tiết</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="form-group">
+      {{ Form::label('description', 'Mô tả *') }}
+      {{ Form::textarea('description', null, [
+        'class' => 'form-control',
+        'id' => 'description',
+        'rows' => 7,
+        'required' => true,
+      ])}}
+    </div>
+  </div>
+</div>
 <div class="row">
   <div class="col-xs-6">
     <div class='form-group'>
@@ -31,10 +44,10 @@
   </div>
   <div class="col-xs-6">
     <div class='form-group'>
-      {{ Form::label('area', 'Diện tích (m2) *') }}
-      {{ Form::text('area', null, array(
+      {{ Form::label('square', 'Diện tích (m2) *') }}
+      {{ Form::text('square', null, array(
             'class' => 'form-control',
-            'id' => 'area',
+            'id' => 'square',
             'required' => true,
             'placeholder' => ''))}}
     </div>
@@ -45,10 +58,10 @@
       </label>
     </div>
     <div class='form-group'>
-      {{ Form::label('total_floor', 'Số tầng') }}
-      {{ Form::text('total_floor', null, array(
+      {{ Form::label('floors', 'Số tầng') }}
+      {{ Form::text('floors', null, array(
             'class' => 'form-control',
-            'id' => 'total_floor',
+            'id' => 'floors',
             'placeholder' => ''))}}
     </div>
   </div>
@@ -67,7 +80,7 @@
 
   <div class="col-xs-6">
     <div class='form-group'>
-      {{ Form::label('area', 'Phòng tắm') }}
+      {{ Form::label('bathrooms', 'Phòng tắm') }}
       {{ Form::text('bathrooms', null, array(
             'class' => 'form-control',
             'id' => 'bathrooms',

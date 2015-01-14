@@ -1,6 +1,6 @@
 <?php
 
-class PropertiesController extends \BaseController {
+class ListingsController extends \BaseController {
 
 	public function __construct() {
         $this->beforeFilter('auth', array('except' => ['index', 'show']));
@@ -39,7 +39,7 @@ class PropertiesController extends \BaseController {
 		foreach ($subcategoryList as $subcategory) {
 			$subcategories[$subcategory->id] = $subcategory->name;
 		}
-		return View::make('properties.create', [
+		return View::make('listings.create', [
 			'cities' => $cities,
 			'categories' => $categories,
 			'categoryList' => $categoryList,
@@ -55,19 +55,29 @@ class PropertiesController extends \BaseController {
 	 */
 	public function store()
 	{
-		// save title
-		// save catalog
-		// save subcatalog
-		// save location
-		// IMAGES
+		// generate slug URL
+		$data = Input::all();
+		$data['slug'] = StringHelper::generate_slug(Input::get('name'));
+
 		// move temprary images to storage directory
 		$images = Input::get('image');
-
-		// foreach ($images as $name) {
-			// rename(app_path().'/../public/tmp/'.$name, app_path().'/../public/assets/'.$name);
-		// }
-		Property::create(Input::all());
-		return 3;
+		$listing = Listing::create($data);
+		try {
+			foreach ($images as $name) {
+				if ($name && ($name != '')) {
+					rename(app_path().'/../public/tmp/'.$name, app_path().'/../public/assets/'.$name);
+					Image::create([
+						'name' => $name,
+						'title' => $listing->name,
+						'listing_id' => $listing->id
+					]);
+				}
+			}
+		} catch(Exception $e) {
+			$listing->status = 'error';
+			return Redirect::back()->withError('Đã có lỗi trong quá trình upload ảnh!');
+		}
+		return Redirect::to('/account')->withMessage('Bất động sản của bạn đã được lưu lại và sẽ được hiển thị sau khi được kiểm duyệt.');
 	}
 
 
@@ -79,7 +89,7 @@ class PropertiesController extends \BaseController {
 	 */
 	public function show($slug)
 	{
-		return View::make('properties.show', ['property' => Property::where('slug', $slug)->first()]);
+		return View::make('listings.show', ['listing' => Listing::where('slug', $slug)->first()]);
 	}
 
 

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePropertiesTable extends Migration {
+class CreateListingsTable extends Migration {
 
     /**
      * Run the migrations.
@@ -12,12 +12,13 @@ class CreatePropertiesTable extends Migration {
      */
     public function up()
     {
-        Schema::create('properties', function($table)
+        Schema::create('listings', function($table)
         {
             $table->increments('id');
             $table->integer('user_id');
-            $table->string('name');
+            $table->string('title');
             $table->string('slug')->unique();
+            $table->enum('status', ['spam', 'pending', 'publish', 'trash'])->default('pending');
             $table->string('description');
             $table->integer('category_id')->unsigned();
             $table->integer('subcategory_id')->unsigned();
@@ -27,7 +28,7 @@ class CreatePropertiesTable extends Migration {
             // $table->enum('currency', array('VND', 'SJC', 'USD'));
             $table->string('square'); // square metter
             $table->string('legal_document');
-            $table->string('total_floor');
+            $table->string('floors');
             $table->integer('bedrooms');
             $table->integer('bathrooms');
             $table->string('address');
@@ -46,6 +47,7 @@ class CreatePropertiesTable extends Migration {
             $table->string('contact_name');
             $table->string('contact_mobile');
             $table->string('contact_telephone');
+            $table->string('contact_email');
             $table->string('contact_note');
             $table->timestamps();
         });
@@ -58,7 +60,7 @@ class CreatePropertiesTable extends Migration {
      */
     public function down()
     {
-        Schema::drop('properties');
+        Schema::drop('listings');
     }
 
 }

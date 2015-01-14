@@ -10,10 +10,10 @@
             'placeholder' => ''))}}
     </div>
     <div class='form-group'>
-      {{ Form::label('contact_tel', 'Điện thoại bàn') }}
-      {{ Form::text('contact_tel', null, array(
+      {{ Form::label('contact_telephone', 'Điện thoại bàn') }}
+      {{ Form::text('contact_telephone', null, array(
             'class' => 'form-control',
-            'id' => 'contact_tel',
+            'id' => 'contact_telephone',
             'placeholder' => ''))}}
     </div>
   </div>

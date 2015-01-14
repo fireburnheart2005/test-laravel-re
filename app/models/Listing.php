@@ -1,12 +1,12 @@
 <?php
 
-class Property extends Eloquent {
+class Listing extends Eloquent {
 
   /**
    * The database table used by the model.
    *
    * @var string
    */
-  protected $table = 'properties';
+  protected $table = 'listings';
   protected $guarded = ['_token', 'image'];
 }

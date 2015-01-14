@@ -17,10 +17,10 @@ class CreateImagesTable extends Migration {
             $table->increments('id');
             $table->string('name'); // can_ho_catavil_150136
             $table->text('title');
-            $table->integer('property_id')->unsigned();
-            $table->foreign('property_id')
+            $table->integer('listing_id')->unsigned();
+            $table->foreign('listing_id')
                 ->references('id')
-                ->on('properties')
+                ->on('listings')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->timestamps();

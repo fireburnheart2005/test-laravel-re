@@ -57,7 +57,7 @@ class ListingsController extends \BaseController {
 	{
 		// generate slug URL
 		$data = Input::all();
-		$data['slug'] = StringHelper::generate_slug(Input::get('name'));
+		$data['slug'] = StringHelper::generate_slug(Input::get('title'));
 
 		// move temprary images to storage directory
 		$images = Input::get('image');

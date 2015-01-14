@@ -2,10 +2,10 @@
 <div class="row">
   <div class="col-xs-8">
     <div class='form-group'>
-      {{ Form::label('name', 'Tiêu đề *') }}
-      {{ Form::text('name', null, array(
+      {{ Form::label('title', 'Tiêu đề *') }}
+      {{ Form::text('title', null, array(
             'class' => 'form-control',
-            'id' => 'name',
+            'id' => 'title',
             'required' => true,
             'placeholder' => ''))}}
     </div>

@@ -8,5 +8,11 @@ class Listing extends Eloquent {
 	* @var string
 	*/
   	protected $table = 'listings';
+
   	protected $guarded = [];
+
+    public function images()
+    {
+        return $this->hasMany('Image');
+    }
 }

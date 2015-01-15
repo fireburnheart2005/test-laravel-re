@@ -55,9 +55,13 @@ class ListingsController extends \BaseController {
 	 */
 	public function store()
 	{
+		$data = Input::only('title', 'description', 'category_id', 'subcategory_id', 'city_id'
+			, 'district_id', 'ward_id', 'address', 'price', 'square'
+			, 'legal_document', 'floors', 'bedrooms', 'bathrooms', 'contact_name'
+			, 'contact_mobile', 'contact_telephone', 'contact_email', 'contact_note');
 		// generate slug URL
-		$data = Input::all();
 		$data['slug'] = StringHelper::generate_slug(Input::get('title'));
+		$data['transaction_type'] = Input::get('transaction_type') == 'sale' ? 'sale' : 'rent';
 		// generate unique slug URL
 		function unifySlug(&$data, $slug, $i) {
 			$listing = Listing::where('slug', '=', $slug)->count();
@@ -80,7 +84,6 @@ class ListingsController extends \BaseController {
 	        'description' => 'required',
 	        'category_id' => 'required|exists:categories,id',
 	        'subcategory_id' => 'required|exists:subcategories,id',
-	        'transaction_type' => 'required|in:"sale","rent"',
 	        'price' => 'required|integer',
 	        'square' => 'required|integer',
 	        'legal_document' => 'required|in:"Sổ đỏ/Sổ hồng","Giấy tờ hợp lệ","GP Xây dựng","GP Kinh doanh"',
@@ -98,7 +101,7 @@ class ListingsController extends \BaseController {
 						rename(app_path().'/../public/tmp/'.$name, app_path().'/../public/assets/'.$name);
 						Image::create([
 							'name' => $name,
-							'title' => $listing->name,
+							'title' => $listing->title,
 							'listing_id' => $listing->id
 						]);
 					}

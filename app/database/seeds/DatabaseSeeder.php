@@ -33,9 +33,9 @@ class DatabaseSeeder extends Seeder {
 
 		// Seed other tables
 		$this->call('UsersTableSeeder');
-		$this->call('ListingsTableSeeder');
 		$this->call('CategoriesTableSeeder');
 		$this->call('SubcategoriesTableSeeder');
+		$this->call('ListingsTableSeeder');
 	}
 
 }

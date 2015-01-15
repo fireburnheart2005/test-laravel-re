@@ -34,14 +34,14 @@ class CreateListingsTable extends Migration {
             // $table->enum('currency', array('VND', 'SJC', 'USD'));
             $table->string('square'); // square metter
             $table->enum('legal_document', ['Sổ đỏ/Sổ hồng', 'Giấy tờ hợp lệ', 'GP Xây dựng', 'GP Kinh doanh']);
-            $table->string('floors');
-            $table->integer('bedrooms');
-            $table->integer('bathrooms');
+            $table->string('floors')->nullable();
+            $table->integer('bedrooms')->nullable();
+            $table->integer('bathrooms')->nullable();
             $table->string('contact_name');
             $table->string('contact_mobile');
             $table->string('contact_telephone');
-            $table->string('contact_email');
-            $table->string('contact_note');
+            $table->string('contact_email')->nullable();
+            $table->string('contact_note')->nullable();
             $table->integer('city_id')->unsigned();
             $table->foreign('city_id')
                 ->references('id')
@@ -54,7 +54,7 @@ class CreateListingsTable extends Migration {
             $table->foreign('ward_id')
                 ->references('id')
                 ->on('wards');
-            $table->string('address');
+            $table->string('address')->nullable();
             $table->timestamps();
         });
     }

@@ -32,10 +32,10 @@
       {{ Form::label('legal_document', 'Pháp lý *') }}
       {{ Form::select('legal_document', array(
         null=>'Chọn',
-        '1' => 'Sổ đỏ/Sổ hồng',
-        '2' => 'Giấy tờ hợp lệ',
-        '3' => 'GP Xây dựng',
-        '4' => 'GP Kinh doanh'), null, array(
+        'Sổ đỏ/Sổ hồng' => 'Sổ đỏ/Sổ hồng',
+        'Giấy tờ hợp lệ' => 'Giấy tờ hợp lệ',
+        'GP Xây dựng' => 'GP Xây dựng',
+        'GP Kinh doanh' => 'GP Kinh doanh'), null, array(
         'class' => 'form-control',
         'id' => 'legal_document',
         'required' => true,

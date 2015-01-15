@@ -58,26 +58,58 @@ class ListingsController extends \BaseController {
 		// generate slug URL
 		$data = Input::all();
 		$data['slug'] = StringHelper::generate_slug(Input::get('title'));
+		// generate unique slug URL
+		function unifySlug(&$data, $slug, $i) {
+			$listing = Listing::where('slug', '=', $slug)->count();
+			if ($listing) {
+				$i++;
+				$slug = $data['slug']."-$i";
+				unifySlug($data, $slug, $i);
+			} elseif ($i != 0) {
+				$data['slug'] .= "-$i";
+			}
+		}
+		unifySlug($data, $data['slug'], 0);
+		$data['status'] = 'pending';
 
 		// move temprary images to storage directory
 		$images = Input::get('image');
-		$listing = Listing::create($data);
-		try {
-			foreach ($images as $name) {
-				if ($name && ($name != '')) {
-					rename(app_path().'/../public/tmp/'.$name, app_path().'/../public/assets/'.$name);
-					Image::create([
-						'name' => $name,
-						'title' => $listing->name,
-						'listing_id' => $listing->id
-					]);
+		$rules =  array(
+	        'title' => 'required',
+	        'slug' => 'required|unique:listings',
+	        'description' => 'required',
+	        'category_id' => 'required|exists:categories,id',
+	        'subcategory_id' => 'required|exists:subcategories,id',
+	        'transaction_type' => 'required|in:"sale","rent"',
+	        'price' => 'required|integer',
+	        'square' => 'required|integer',
+	        'legal_document' => 'required|in:"Sổ đỏ/Sổ hồng","Giấy tờ hợp lệ","GP Xây dựng","GP Kinh doanh"',
+	        'city_id' => 'required|exists:cities,id',
+	        'district_id' => 'required|exists:districts,id',
+	        'ward_id' => 'required|exists:wards,id',
+	        'contact_name' => 'required'
+	    );
+	    $validator = Validator::make($data, $rules);
+	    if ($validator->passes()) {
+			$listing = Listing::create($data);
+			try {
+				foreach ($images as $name) {
+					if ($name && ($name != '')) {
+						rename(app_path().'/../public/tmp/'.$name, app_path().'/../public/assets/'.$name);
+						Image::create([
+							'name' => $name,
+							'title' => $listing->name,
+							'listing_id' => $listing->id
+						]);
+					}
 				}
+			} catch(Exception $e) {
+				$listing->delete();
+				return Redirect::back()->withErrors(['Đã có lỗi trong quá trình upload ảnh!']);
 			}
-		} catch(Exception $e) {
-			$listing->status = 'error';
-			return Redirect::back()->withError('Đã có lỗi trong quá trình upload ảnh!');
-		}
-		return Redirect::to('/account')->withMessage('Bất động sản của bạn đã được lưu lại và sẽ được hiển thị sau khi được kiểm duyệt.');
+			return Redirect::to('/account')->withMessages(['Bất động sản của bạn đã được lưu lại và sẽ được hiển thị sau khi được kiểm duyệt.']);
+	    }
+	    return Redirect::back()->withErrors($validator->messages());
 	}
 
 

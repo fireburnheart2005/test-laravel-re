@@ -55,9 +55,13 @@
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </div>
-    <div class="container">
+    @if (@$noContainerClass !== true)
+      <div class="container">
+        @yield('content')
+      </div>
+    @else
       @yield('content')
-    </div>
+    @endif
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/js/bootstrap.min.js"></script>
     <script type="text/javascript">

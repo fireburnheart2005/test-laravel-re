@@ -124,7 +124,7 @@ class ListingsController extends \BaseController {
 	 */
 	public function show($slug)
 	{
-		return View::make('listings.show', ['listing' => Listing::where('slug', $slug)->first()]);
+		return View::make('listings.show', ['listing' => Listing::where('slug', $slug)->first(), 'noContainerClass' => true]);
 	}
 
 

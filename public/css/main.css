@@ -218,3 +218,10 @@ label {
 #account-page .dashboard .row {
   margin-bottom: 50px;
 }
+.bottom {
+  position: absolute;
+  bottom: 0;
+}
+.listing-wrapper {
+  margin-bottom: 15px;
+}

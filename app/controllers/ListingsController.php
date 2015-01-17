@@ -74,6 +74,7 @@ class ListingsController extends \BaseController {
 			}
 		}
 		unifySlug($data, $data['slug'], 0);
+		$data['user_id'] = Auth::user()->id;
 		$data['status'] = 'pending';
 
 		// move temprary images to storage directory

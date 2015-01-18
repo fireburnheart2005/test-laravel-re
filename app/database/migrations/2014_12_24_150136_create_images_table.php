@@ -16,6 +16,7 @@ class CreateImagesTable extends Migration {
         {
             $table->increments('id');
             $table->string('name'); // can_ho_catavil_150136
+            $table->string('extension');
             $table->text('title');
             $table->integer('listing_id')->unsigned();
             $table->foreign('listing_id')

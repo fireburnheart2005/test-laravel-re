@@ -74,6 +74,7 @@ class ListingsController extends \BaseController {
 			}
 		}
 		unifySlug($data, $data['slug'], 0);
+		$data['user_id'] = Auth::user()->id;
 		$data['status'] = 'pending';
 
 		// move temprary images to storage directory
@@ -98,7 +99,12 @@ class ListingsController extends \BaseController {
 			try {
 				foreach ($images as $name) {
 					if ($name && ($name != '')) {
+						// move original image
 						rename(app_path().'/../public/tmp/'.$name, app_path().'/../public/assets/'.$name);
+						$extension = pathinfo($name, PATHINFO_EXTENSION);
+						$basename = rtrim($name, '.'.$extension);
+						// more list image
+						rename(app_path().'/../public/tmp/'.$basename.'_list.'.$extension, app_path().'/../public/assets/'.$basename.'_list.'.$extension);
 						Image::create([
 							'name' => $name,
 							'title' => $listing->title,
@@ -107,8 +113,11 @@ class ListingsController extends \BaseController {
 					}
 				}
 			} catch(Exception $e) {
+				// delete listing from DB
 				$listing->delete();
-				return Redirect::back()->withErrors(['Đã có lỗi trong quá trình upload ảnh!']);
+				// log error
+				Log::error($e->getMessage());
+				// return Redirect::back()->withErrors(['Đã có lỗi trong quá trình upload ảnh!']);
 			}
 			return Redirect::to('/account')->withMessages(['Bất động sản của bạn đã được lưu lại và sẽ được hiển thị sau khi được kiểm duyệt.']);
 	    }

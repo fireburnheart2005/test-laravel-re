@@ -96,9 +96,12 @@
         async: false,
         success: function (data) {
           // step 1: update hidden file name input
-          $('input[name="image[' + currentIndex + ']"]').val(data);
+          console.log(data.basename.substr(0, data.basename.length) + '.' + data.extension);
+          $('input[name="image[' + currentIndex + ']"]').val(data.basename.substr(0, data.basename.length)
+            + '.' + data.extension);
           // step 2: preview image
-          $('.add-image-wrapper[data-index="' + currentIndex + '"] img').attr('src', '/tmp/' + data).removeClass('hidden');
+          $('.add-image-wrapper[data-index="' + currentIndex + '"] img').attr('src', '/tmp/' + data.basename
+            + '_list.' + data.extension).removeClass('hidden');
           $('.add-image-wrapper[data-index="' + currentIndex + '"] a.add-image-link').addClass('hidden');
           // step 3: reset hidden file input value
           $('form.hidden input').val('');

@@ -59,5 +59,10 @@ Route::resource('sessions', 'SessionsController');
 Route::resource('users', 'UsersController');
 
 Route::get('/account', 'AccountController@index');
-// DO NOT put any routes after the following
+// DO NOT put any routes (except error and logging) after the following
 Route::get('/{slug}', 'ListingsController@show');
+
+App::missing(function($exception)
+{
+    return Response::view('404', array(), 404);
+});

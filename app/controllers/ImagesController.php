@@ -32,25 +32,27 @@ class ImagesController extends \BaseController {
 	 */
 	public function storeTemp()
 	{
+		$baseName = basename($_FILES['image']['name']);
+		$extension = pathinfo($baseName, PATHINFO_EXTENSION);
 		$targetDir = app_path().'/../public/tmp';
-		$fileName = basename($_FILES['image']['name']);
-		$imageFileType = pathinfo($fileName, PATHINFO_EXTENSION);
-		$targetFileName = date('Y_m_d_').time().'_'.str_random(10).'.'.$imageFileType;
-		$targetFile = $targetDir.'/'.$targetFileName;
+		$targetBaseName = date('Y_m_d_').time().'_'.str_random(5);
 	    if ($_FILES['image']['size'] > 500000) {
 		    return 'Sorry, your file is too large.';
 		}
-		if($imageFileType != 'jpg' && $imageFileType != 'png' && $imageFileType != 'jpeg') {
+		if($extension != 'jpg' && $extension != 'png' && $extension != 'jpeg') {
 		    return "Sorry, only JPG, JPEG and PNG files are allowed.";
 		}
 		// Check if image file is a actual image or fake image
 	    $check = getimagesize($_FILES['image']['tmp_name']);
 	    if($check !== false) {
-        	$image = new Gmagick($_FILES['image']['tmp_name']);
-			$image->thumbnailImage(304, 228);
+			// move uploaded image
+			move_uploaded_file($_FILES['image']['tmp_name'], $targetDir.'/'.$targetBaseName.'.'.$extension);
+			// create list image from copied file
+			$image = new Gmagick($targetDir.'/'.$targetBaseName.'.'.$extension);
+			$image->thumbnailImage(120, 90);
 			try {
-				$image->writeImage($targetFile);
-				return $targetFileName;
+				$image->writeImage($targetDir.'/'.$targetBaseName.'_list.'.$extension);
+				return Response::json(['basename' => $targetBaseName, 'extension' => $extension]);
 			} catch (Exception $e) {
                 return 'Sorry, there was an error uploading your file.';
 			}
@@ -109,14 +111,18 @@ class ImagesController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /images/{id}
+	 * DELETE /images/tmp/{filename}
 	 *
-	 * @param  int  $id
+	 * @param  int  $filename
 	 * @return Response
 	 */
-	public function destroyTemp($id)
+	public function destroyTemp($filename)
 	{
-		unlink(app_path().'/../public/tmp/'.$id);
+		$extension = pathinfo($filename, PATHINFO_EXTENSION);
+		$basename = rtrim($filename, '.'.$extension);
+		foreach (glob(app_path().'/../public/tmp/'.$basename.'*') as $file) {
+		   unlink($file);
+		}
 	}
 
 }
